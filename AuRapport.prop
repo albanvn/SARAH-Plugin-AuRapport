@@ -1,0 +1,8 @@
+{
+  "modules" : { 
+    "AuRapport"  : {
+      "description": "",
+      "version": "1.0"
+	}
+  }
+}
