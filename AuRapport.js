@@ -16,14 +16,16 @@ var g_debug=0;
 var loc=require("./customloc.js").init(__dirname);
 var bf=require("./basicfunctions.js");
 
-
 var GetData=function(config)
 {
 	var fs   = require('fs');
 	var content = fs.readFileSync("custom.ini",'utf8');
-	var regexp     = new RegExp("[:space:]*name[:space:]*=[:space:]*(.*)",'i');
+	var regexp  = new RegExp("\\s*name\\s*=\\s*(.*)",'i');
 	var res=regexp.exec(content);
-	loc.addDictEntry("NAME", res[1]);
+	if (res.length>0)
+		loc.addDictEntry("NAME", res[1]);
+	else
+		loc.addDictEntry("NAME", "SARAH");
 	d=new Date();
 	var dt=bf.formatDate(loc, d, 5);
 	loc.addDictEntry("DATE", dt);
