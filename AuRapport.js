@@ -18,6 +18,7 @@ var bf=require("./basicfunctions.js");
 
 var GetData=function(config)
 {
+	var count=0;
 	var fs   = require('fs');
 	var content = fs.readFileSync("custom.ini",'utf8');
 	var regexp  = new RegExp("\\s*name\\s*=\\s*(.*)",'i');
@@ -31,11 +32,23 @@ var GetData=function(config)
 	loc.addDictEntry("DATE", dt);
 	var tm=bf.formatDate(loc, d, 3);
 	loc.addDictEntry("TIME", tm);
-	var count=0;
 	for (var i in config.modules)
 	  count+=1;
 	loc.addDictEntry("NBPLUGIN", count);
 	return loc.getLocalString("HELLO");
+}
+
+var GetModuleName=function(config)
+{
+	var txt="";
+	var count=0;
+	for (var i in config.modules)
+	{
+		txt+=", "+i;
+		count++;
+	}
+	loc.addDictEntry("NBPLUGIN", count);
+	return loc.getLocalString("ENUM")+txt;
 }
 
 exports.init = function(SARAH)
@@ -52,10 +65,18 @@ exports.release = function(SARAH)
 
 var action = function(data, callback, config, SARAH)
 {
+	var text;
 	if ((g_debug&2)!=0)
 		console.log(data);
-
-	var text=GetData(config);
+    switch (data.mode)
+	{
+		case "enum":
+			text=GetModuleName(config);
+			break;
+		default:
+			text=GetData(config);
+			break;
+	}
 	callback({'tts': text});
 	return 0;
 }

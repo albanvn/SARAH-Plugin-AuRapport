@@ -5,6 +5,7 @@
     <item>Sarah</item>
     <one-of>
       <item>au rapport</item>
+      <item>quels sont les pleug in chargés<tag>out.action.mode="enum";</tag></item>
     </one-of>
     <item repeat="0-1">
       <one-of>

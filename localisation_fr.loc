@@ -11,4 +11,5 @@ FORMATDATE2B2#%COMPLETEDAY% à %HOURS% heures et %MINUTES% minutes
 FORMATDATE3A#%HOURS% heures et %MINUTES% minutes
 FORMATDATE3B#%HOURS% heures
 FORMATDATE5A#%WEEKDAY% %DAY% %MONTH%
-HELLO#Bonjour, je suis %NAME%. Nous sommes le %DATE% et il est %TIME%. Il y a %NBPLUGIN% pleug in chargé dans ma base. Je suis maintenant à vos ordres.
+HELLO#Bonjour, je suis %NAME%. Nous sommes le %DATE% et il est %TIME%. Il y a %NBPLUGIN% pleug in chargé dans ma base. Je suis maintenant à vos ordres,
+ENUM#Voici les noms des %NBPLUGIN% pleug in chargés:
